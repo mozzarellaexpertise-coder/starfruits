@@ -1,21 +1,19 @@
-// svelte.config.js (The Correct Vercel Setup)
-// 🚨 CHANGE IMPORT: Use the vercel adapter directly
+// svelte.config.js (The FINAL, FINAL Version)
 import adapter from '@sveltejs/adapter-vercel'; 
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-    preprocess: vitePreprocess(),
+    // ... preprocess
 
     kit: {
-        // 🚨 FIX: Use the specific adapter with the required configuration
+        // Must use adapter-vercel
         adapter: adapter({
-            // This is the CRITICAL part that makes Vercel expose the secret
+            // THIS MUST BE HERE!
             env: { 
-                private: ['DATABASE_URL'] 
+                private: ['DATABASE_URL'] // Tells SvelteKit to expose the secret
             }
-        // Use 'as any' to keep TypeScript happy if it complains
-        }) 
+        })
     }
 };
 
