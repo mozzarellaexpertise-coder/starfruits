@@ -1,7 +1,8 @@
-import { neon } from '@neondatabase/serverless';
-import { env } from '$env/dynamic/private';
+// src/lib/db.ts (Use DEFAULT export)
+import { neon } from "@neondatabase/serverless";
+import { DATABASE_URL } from '$env/static/private'; 
 
-export function getSql() {
-    if (!env.DATABASE_URL) throw new Error('DATABASE_URL not set!');
-    return neon(env.DATABASE_URL);
-}
+const sql = neon(DATABASE_URL); 
+
+// 🚨 FIX: Use 'export default' 🚨
+export default sql;
