@@ -15,7 +15,7 @@ const config = {
                 private: ['DATABASE_URL'] 
             }
         // Use 'as any' to keep TypeScript happy if it complains
-        } as any) 
+        }) 
     }
 };
 
