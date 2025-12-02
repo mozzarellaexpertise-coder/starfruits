@@ -1,19 +1,18 @@
-// svelte.config.js (The FINAL, FINAL Version)
+// svelte.config.js
 import adapter from '@sveltejs/adapter-vercel'; 
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-    // ... preprocess
+    preprocess: vitePreprocess(),
 
     kit: {
-        // Must use adapter-vercel
         adapter: adapter({
-            // THIS MUST BE HERE!
+            // THIS SECTION IS THE ONLY THING THAT FIXES THE ERROR ABOVE!
             env: { 
-                private: ['DATABASE_URL'] // Tells SvelteKit to expose the secret
+                private: ['DATABASE_URL'] // Must list the variable name here
             }
-        })
+        }) 
     }
 };
 
