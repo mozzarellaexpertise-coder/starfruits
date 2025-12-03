@@ -1,16 +1,13 @@
-// svelte.config.js
-// 🚨 NEW IMPORT: adapter-netlify
-import adapter from '@sveltejs/adapter-netlify'; 
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import adapter from '@sveltejs/adapter-netlify';
+import preprocess from 'svelte-preprocess';
 
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-    preprocess: vitePreprocess(),
-
-    kit: {
-        // 🚨 NEW CONFIG: Simple adapter call
-        adapter: adapter() 
+export default {
+  preprocess: preprocess(),
+  kit: {
+    adapter: adapter(),
+    // Optional: if using environment variables
+    alias: {
+      $lib: 'src/lib'
     }
+  }
 };
-
-export default config;
